@@ -4,15 +4,15 @@ include_once('connection.php');
 require_once 'core.php';
 
 if (loggedin()) {
-    $username = $_SESSION['username'];
-    $sql_query =  "SELECT * FROM `users` WHERE username = '$username'  ";
-    $insert_run = mysqli_query($conn, $sql_query);
-    $row = mysqli_fetch_assoc($insert_run);
-    $name = $row['name'];
-    $username = $row['username'];
-    $email = $row['email'];
-    $phone = $row['phone'];
-    echo <<< _END
+  $username = $_SESSION['username'];
+  $sql_query =  "SELECT * FROM `users` WHERE username = '$username'  ";
+  $insert_run = mysqli_query($conn, $sql_query);
+  $row = mysqli_fetch_assoc($insert_run);
+  $name = $row['name'];
+  $username = $row['username'];
+  $email = $row['email'];
+  $phone = $row['phone'];
+  echo <<< _END
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,13 +34,13 @@ if (loggedin()) {
     <!-- Page styles -->
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
-    <link rel="stylesheet" href="css/signup_style.css">
-    <link rel="stylesheet" href="profile.css"> 
+    <link rel="stylesheet" href="styles/signup_style.css">
+    <link rel="stylesheet" href="styles/profile.css"> 
 </head>
-<link href="css/login_style.css" rel="stylesheet">
-<link href="css/divison_style.css" rel="stylesheet">
-<link href="timeline.css" rel="stylesheet">
-<link href="alert.css" rel="stylesheet">
+<link href="styles/login_style.css" rel="stylesheet">
+<link href="styles/divison_style.css" rel="stylesheet">
+<link href="styles/timeline.css" rel="stylesheet">
+<link href="styles/alert.css" rel="stylesheet">
 <body style="background-color:#FFF;">
 <nav class="navbar-fixed navbar-inverse navbar-fixed-top">
   <div class="container">
@@ -89,7 +89,7 @@ if (loggedin()) {
         
             <div class="box-body">
                      <div class="col-sm-6">
-                     <div  align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive"> 
+                     <div  align="center"> <img alt="User Pic" src="images/profile.jpg" id="profile-image1" class="img-circle img-responsive" height="200px" width="200px"> 
 
   
 
@@ -159,24 +159,24 @@ _END;
 
 
 
-    $sql_query = "SELECT * FROM advertisements where `username` = '$username' ORDER BY `adv_id` DESC";
+  $sql_query = "SELECT * FROM advertisements where `username` = '$username' ORDER BY `adv_id` DESC";
 
-    //echo $sql_query;
-    $insert_run = mysqli_query($conn, $sql_query);
-    $i = 1;
-    if ($insert_run) {
-        while ($row = mysqli_fetch_assoc($insert_run)) {
-            if ($row['approve'] == true)
-                $post_status = "green.png";
-            else
-                $post_status = "red.png";
+  //echo $sql_query;
+  $insert_run = mysqli_query($conn, $sql_query);
+  $i = 1;
+  if ($insert_run) {
+    while ($row = mysqli_fetch_assoc($insert_run)) {
+      if ($row['approve'] == true)
+        $post_status = "images/green.png";
+      else
+        $post_status = "images/red.png";
 
 
-            $adv_id = $row['adv_id'];
+      $adv_id = $row['adv_id'];
 
-            $image_path = "user_uploads/" . $row['image'];
+      $image_path = "user_uploads/" . $row['image'];
 
-            echo '<div class="container" >
+      echo '<div class="container" >
 			<div class="row" id="div' . $i . '"><div class="col-md-8 col-md-offset-3 div"
 			 style="overflow:auto;">
 			<div class="col-md-4"><img src=' . $image_path . ' style="width:100%;"></div>
@@ -201,15 +201,15 @@ _END;
 			<p style="text-align:center;">' . $row['datetime'] . '(Last Updated)</p><br>
 			</div></div>
 			</div> </div> ';
-            $i++;
-        }
+      $i++;
     }
-    echo <<< _END
+  }
+  echo <<< _END
 	</body>
 	</html>
 _END;
 } else {
-    echo <<< _END
+  echo <<< _END
 	<!DOCTYPE html>
 <html lang="en">
 <head>

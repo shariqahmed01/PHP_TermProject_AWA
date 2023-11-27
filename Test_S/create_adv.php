@@ -12,16 +12,17 @@
 
 
     <link rel="stylesheet" href="styles/create_adv_style.css">
-    <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="not_loggedin.css">
-    <link rel="stylesheet" href="alert.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/not_loggedin.css">
+    <link rel="stylesheet" href="styles/alert.css">
 </head>
 
 <body>
     <div class="collapse navbar-collapse navHeaderCollapse">
 
         <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a href="home.php">Home</a></li>
+            <li><a href="home.php">Home</a>
+            <li class="active"><a href="create_adv.php">Create Advertisement</a></li>
             <?php
             if (loggedin()) {
                 $temp = $_SESSION['username'];
@@ -116,7 +117,7 @@ _END;
     <div id="logbox">
       <form id="create_adverisement" method="post" action="create_adv.php" enctype="multipart/form-data">
         <h1>Create your Advertisement</h1>
-        <input name="title" type="text"  placeholder="Title of Adverisement " class="input pass"  autofocus="autofocus" value="$title" required = "required"/>
+        <input name="title" type="text"  placeholder="Title" class="input pass"  autofocus="autofocus" value="$title" required = "required"/>
         
         <input name="price" type="text" placeholder="Enter Price e.g: 1000-2000" class="input pass"  required = "required"  />
         <input name="phone" type="number" placeholder="Phone Number" class="input pass" value = "$phone" required = "required"  />
@@ -146,7 +147,15 @@ _END;
 
         <textarea  name = "description" placeholder="Describe product in 200 characters" class="input pass"  required="required" ></textarea> </br>
 
-        <input type="file" name="Filename" id="fileToUpload">
+        
+        <div class="button-wrapper">
+  <span class="label">
+    Upload File
+  </span>
+  
+    <input type="file" name="Filename" id="upload" class="upload-box" placeholder="Upload File">
+  
+</div>
         
         <input type="submit" value="Submit!" class="inputButton"/>
         

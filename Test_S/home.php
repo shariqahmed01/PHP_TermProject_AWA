@@ -10,7 +10,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
     <!-- Page styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -32,7 +31,6 @@
 
 
 
-
     <nav class="navbar-fixed navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -48,13 +46,9 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="home.php">Home</a></li>
-
                     <li>
                         <a href="create_adv.php">Create Advertisement</a>
                     </li>
-
-
-
                     <?php
                     if (loggedin()) {
                         $temp = $_SESSION['username'];
@@ -68,13 +62,10 @@ _END;
       		<li><a href="login.php"><span class="glyphicon glyphicon-user"></span> Sign In</a>
 _END;
                     }
-
                     ?>
 
                 </ul>
             </div>
-
-
 
         </div>
     </nav>
@@ -94,18 +85,18 @@ _END;
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="buy.png" alt="buy image">
+                <img src="images/buy.png" alt="buy image">
             </div>
 
             <div class="item">
-                <img src="sell.png" alt="sell image">
+                <img src="images/sell.png" alt="sell image">
             </div>
             <div class="item">
-                <img src="rent.png" alt="rent image">
+                <img src="images/rent.png" alt="rent image">
             </div>
 
             <div class="item">
-                <img src="sell.png" alt="rent image">
+                <img src="images/sell.png" alt="rent image">
             </div>
         </div>
 
@@ -120,10 +111,6 @@ _END;
         </a>
     </div>
     <!-- Slide show ENDS******************************** -->
-
-
-
-
 
     <div class="container">
         <div class="container">
@@ -215,7 +202,7 @@ _END;
             $tot_add = $cat_add . $area_add . $price_add;
         }
         $sql_query =  $sql_query . " " . $tot_add . " ORDER BY `adv_id` DESC";
-        echo $sql_query;
+        // echo $sql_query;
         $insert_run = mysqli_query($conn, $sql_query);
         $i = 1;
         if ($insert_run) {
@@ -243,7 +230,7 @@ _END;
                         $neg_row = mysqli_fetch_assoc($result);
                         $neg_id = $neg_row['neg_id'];
                         echo '<p style="text:align:center; font-weight:bold; font-color:#FAB;">You have already shown an interest in this post.</p>';
-                        echo '<img src = "star.png" height= "20" width= "20" /> ';
+                        echo '<img src = "images/star.png" height= "20" width= "20" /> ';
                         echo '<form action="delete_negotiations.php" method = "post">';
                         echo '<input type="hidden" name="del_neg_id" value=' . $neg_id . '>';
                         echo '<input type="submit" value="Withdraw Interest">';
@@ -267,18 +254,8 @@ _END;
                 $i++;
             }
         }
-
-
         ?>
-
-
-
-
-
-
-
     </div>
-
     </div>
 
     <!-- FOOTER starts ********************************************************* -->
@@ -300,7 +277,6 @@ _END;
                     <h6 class="heading7">GENERAL LINKS</h6>
                     <ul class="footer-ul">
                         <li><a href="#"> About Us</a></li>
-
                     </ul>
                 </div>
                 <div class="col-md-3 col-sm-6 paddingtop-bottom">
@@ -332,8 +308,6 @@ _END;
                 <ul class="bottom_ul">
                     <li><a href="#">khareedobecho.com</a></li>
                     <li><a href="#">About us</a></li>
-
-
                 </ul>
             </div>
         </div>
