@@ -1,7 +1,7 @@
 <?php
 $dbusername = "root";
 $password = "";
-$dbname = "khreedo_becho";
+$dbname = "student_compass";
 $servername = "localhost";
 // Create connection
 $conn = mysqli_connect($servername, $dbusername, $password, $dbname);
