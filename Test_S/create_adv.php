@@ -63,6 +63,7 @@ _END;
         $price_initial = "";
         $price_final = "";
         $username = $_SESSION['username'];
+        $result ="";
 
 
         if (
@@ -107,11 +108,21 @@ _END;
                   '$price_initial', '$price_final', '$phone', '$address', '$area', '$category', '$description', '$Filename' , '$temp_approve')";
 
                     $insert_query_run = mysqli_query($conn, $insert_query);
-                    echo '<div class="alert1"> Your Advertisement is posted Successfully in our database, your post is sent  to be reviewed by us Our Admin & hopefully approved by our admin shortly , Thank you :)  </div>';
+                    $_SESSION['res'] = '<div class="alert1"> Your Advertisement is posted Successfully in our database, your post is sent  to be reviewed by us Our Admin & hopefully approved by our admin shortly , Thank you :)  </div>';
                 } else {
-                    echo "There was some error uploading your file";
+                    $_SESSION['res'] =  "There was some error uploading your file";
                 }
             }
+            header("Location:{$_SERVER['PHP_SELF']}");
+            exit();
+                 
+        }
+        if(isset($_SESSION['res'])){
+            $result=$_SESSION['res'];
+            // session_destroy();
+unset($_SESSION['res']);      }
+        if (!empty($result)) {
+            echo "<h3>" . $result . "</h3>";
         }
         echo <<< _END
         <div class="container">
@@ -122,7 +133,8 @@ _END;
         <input name="title" type="text"  placeholder="Title" class="input pass"  autofocus="autofocus" value="$title" required = "required"/>
         
         <input name="price" type="text" placeholder="Enter Price e.g: 1000-2000" class="input pass"  required = "required"  />
-        <input name="phone" type="number" placeholder="Phone Number" class="input pass" value = "$phone" required = "required"  />
+        <input name="phone" type="number" placeholder="Phone Number" class="input pass" value="$phone" required="required" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" />
+
         <input name="address" type="text" placeholder="Address *(OPTIONAL)" class="input pass" value = "$address"   />
         
         <select  name =  "area" class="input pass"  value = "$area" required = "required">
