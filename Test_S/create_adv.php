@@ -67,7 +67,7 @@ _END;
 
         if (
             isset($_POST['title']) && isset($_POST['price']) && isset($_POST['phone']) && isset($_POST['area']) &&
-            isset($_POST['category']) && isset($_POST['description']) && $_SESSION['flag']=false
+            isset($_POST['category']) && isset($_POST['description']) 
         ) {
 
             //echo "Hello World 2 !";
@@ -107,7 +107,6 @@ _END;
                   '$price_initial', '$price_final', '$phone', '$address', '$area', '$category', '$description', '$Filename' , '$temp_approve')";
 
                     $insert_query_run = mysqli_query($conn, $insert_query);
-                    $_SESSION['flag']=true;
                     echo '<div class="alert1"> Your Advertisement is posted Successfully in our database, your post is sent  to be reviewed by us Our Admin & hopefully approved by our admin shortly , Thank you :)  </div>';
                 } else {
                     echo "There was some error uploading your file";
