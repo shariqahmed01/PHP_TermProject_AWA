@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <?php require_once 'core.php'; ?>
 <html lang="en">
@@ -63,9 +64,10 @@ _END;
         $price_final = "";
         $username = $_SESSION['username'];
 
+
         if (
             isset($_POST['title']) && isset($_POST['price']) && isset($_POST['phone']) && isset($_POST['area']) &&
-            isset($_POST['category']) && isset($_POST['description'])
+            isset($_POST['category']) && isset($_POST['description']) && $_SESSION['flag']=false
         ) {
 
             //echo "Hello World 2 !";
@@ -84,6 +86,7 @@ _END;
             $Filename = preg_replace('/\s+/', '', $Filename);
             $target = $target_dir . $Filename;
             $j = 1;
+
             while (file_exists($target)) {
                 $target = $target_dir . $Filename . "($j)";
                 $j = $j + 1;
@@ -104,7 +107,7 @@ _END;
                   '$price_initial', '$price_final', '$phone', '$address', '$area', '$category', '$description', '$Filename' , '$temp_approve')";
 
                     $insert_query_run = mysqli_query($conn, $insert_query);
-
+                    $_SESSION['flag']=true;
                     echo '<div class="alert1"> Your Advertisement is posted Successfully in our database, your post is sent  to be reviewed by us Our Admin & hopefully approved by our admin shortly , Thank you :)  </div>';
                 } else {
                     echo "There was some error uploading your file";
@@ -125,13 +128,13 @@ _END;
         
         <select  name =  "area" class="input pass"  value = "$area" required = "required">
         <option  value="">___Select your locality____</option>
-        <option  value="chhapra" >Chhapra</option>
-        <option  value="jaipur" >Jaipur</option>
-        <option  value="sikar">Sikar</option>
-        <option  value="kota">Kota</option>
-        <option  value="ajmer">Ajmer</option>
-        <option  value="jodhpur">Jodhpur</option>
-        <option  value="jaisalmer">Jaisalmer</option>
+        <option  value="overlandpark" >Overland Park</option>
+        <option  value="leesummit" >Lee Summit</option>
+        <option  value="olathe">olathe</option>
+        <option  value="warrensburg">warrensburg</option>
+        <option  value="kansascity">kansascity</option>
+        <option  value="independence">independence</option>
+        <option  value="lenexa">lenexa</option>
         </select>
 
         

@@ -12,8 +12,8 @@ if (loggedin()) {
   $username = $row['username'];
   $email = $row['email'];
   $phone = $row['phone'];
-  echo <<< _END
-<!DOCTYPE html>
+  echo ' 
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>Welcome ! $username</title>
@@ -31,21 +31,21 @@ if (loggedin()) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
 
-    <!-- Page styles -->
+   
    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"> -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="styles/signup_style.css">
-    <link rel="stylesheet" href="styles/profile.css"> 
+    <link rel="stylesheet" href="styles/material.min.css">
 </head>
 <link href="styles/login_style.css" rel="stylesheet">
-<link href="styles/divison_style.css" rel="stylesheet">
+
 <link href="styles/timeline.css" rel="stylesheet">
-<link href="styles/alert.css" rel="stylesheet">
-<body style="background-color:#FFF;">
-<nav class="navbar-fixed navbar-inverse navbar-fixed-top">
+
+<body>
+<nav class="navbar-fixed navbar-inverse">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="#">Khreedo Becho</a>
+      <a class="navbar-brand" href="#">Student Compass</a>
     </div>
 
     <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
@@ -55,12 +55,15 @@ if (loggedin()) {
     </button>
     <div class="collapse navbar-collapse navHeaderCollapse">
 
-      <ul class="nav navbar-nav navbar-right">
-      <li class="active"><a href="home.php">Home</a></li>
-
+      <ul class="navbar-right">
+      <li><a href="home.php">Home</a></li>';
+  if (loggedin()) {
+    $temp = $_SESSION['username'];
+    echo <<< _END
+      <li class="active"><a href="profile.php">Welcome ! $temp</a></li>
       <li> 
   <a href = "create_adv.php">Create Advertisement</a></li>
-  <li class="active"><a href="notifications.php">Notifications</a></li>
+  <li><a href="notifications.php">Notifications</a></li>
      
 
 	 </ul>
@@ -89,7 +92,7 @@ if (loggedin()) {
         
             <div class="box-body">
                      <div class="col-sm-6">
-                     <div  align="center"> <img alt="User Pic" src="images/profile.jpg" id="profile-image1" class="img-circle img-responsive" height="200px" width="200px"> 
+                     <div  align="center"> <img alt="User Pic" src="images/profile.jpg" id="profile-image1" height="100px" width="100px"> 
 
   
 
@@ -97,12 +100,6 @@ if (loggedin()) {
            <!--     <input id="profile-image-upload" class="hidden" type="file">
 <div style="color:#999;" >click here to change profile image</div> -->
                 <!--Upload Image Js And Css-->  
-           
-              
-   
-                
-                
-                     
                      
                      </div>
 
@@ -159,24 +156,24 @@ _END;
 
 
 
-  $sql_query = "SELECT * FROM advertisements where `username` = '$username' ORDER BY `adv_id` DESC";
+    $sql_query = "SELECT * FROM advertisements where `username` = '$username' ORDER BY `adv_id` DESC";
 
-  //echo $sql_query;
-  $insert_run = mysqli_query($conn, $sql_query);
-  $i = 1;
-  if ($insert_run) {
-    while ($row = mysqli_fetch_assoc($insert_run)) {
-      if ($row['approve'] == true)
-        $post_status = "images/green.png";
-      else
-        $post_status = "images/red.png";
+    //echo $sql_query;
+    $insert_run = mysqli_query($conn, $sql_query);
+    $i = 1;
+    if ($insert_run) {
+      while ($row = mysqli_fetch_assoc($insert_run)) {
+        if ($row['approve'] == true)
+          $post_status = "images/green.png";
+        else
+          $post_status = "images/red.png";
 
 
-      $adv_id = $row['adv_id'];
+        $adv_id = $row['adv_id'];
 
-      $image_path = "user_uploads/" . $row['image'];
+        $image_path = "user_uploads/" . $row['image'];
 
-      echo '<div class="container" >
+        echo '<div class="container" >
 			<div class="row" id="div' . $i . '"><div class="col-md-8 col-md-offset-3 div"
 			 style="overflow:auto;">
 			<div class="col-md-4"><img src=' . $image_path . ' style="width:100%;"></div>
@@ -201,15 +198,15 @@ _END;
 			<p style="text-align:center;">' . $row['datetime'] . '(Last Updated)</p><br>
 			</div></div>
 			</div> </div> ';
-      $i++;
+        $i++;
+      }
     }
-  }
-  echo <<< _END
+    echo <<< _END
 	</body>
 	</html>
 _END;
-} else {
-  echo <<< _END
+  } else {
+    echo <<< _END
 	<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -231,9 +228,9 @@ _END;
     <!-- Page styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="css/signup_style.css">
-    <link rel="stylesheet" href="profile.css">
-    <link rel="stylesheet" href="alert.css">
+    <link rel="stylesheet" href="styles/signup_style.css">
+    <link rel="stylesheet" href="styles/profile.css">
+    <link rel="stylesheet" href="styles/alert.css">
 </head>
 
 <body>
@@ -242,4 +239,5 @@ _END;
 </body>
 </html>
 _END;
+  }
 }

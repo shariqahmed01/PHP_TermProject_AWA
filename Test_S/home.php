@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Khreedo Becho</title>
+    <title>Student Compass</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,8 +14,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="styles/material.min.css">
+    <link rel="stylesheet" href="styles/signup_style.css">
 
     <style>
+        body {
+            background-color: #fff;
+        }
+
         .carousel-inner>.item>img,
         .carousel-inner>.item>a>img {
             width: 70%;
@@ -34,7 +39,7 @@
     <nav class="navbar-fixed navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Khreedo Becho</a>
+                <a class="navbar-brand" href="#">Student Compass</a>
             </div>
 
             <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
@@ -44,7 +49,7 @@
             </button>
             <div class="collapse navbar-collapse navHeaderCollapse">
 
-                <ul class="nav navbar-nav navbar-right">
+                <ul class="navbar-right">
                     <li class="active"><a href="home.php">Home</a></li>
                     <li>
                         <a href="create_adv.php">Create Advertisement</a>
@@ -131,13 +136,13 @@ _END;
                                 <legend>Filter by Area</legend>
                                 <select name="area" class="input pass" value="$area">
                                     <option value="">___Select your locality____</option>
-                                    <option value="chhapra">Chhapra</option>
-                                    <option value="jaipur">Jaipur</option>
-                                    <option value="sikar">Sikar</option>
-                                    <option value="kota">Kota</option>
-                                    <option value="ajmer">Ajmer</option>
-                                    <option value="jodhpur">Jodhpur</option>
-                                    <option value="jaisalmer">Jaisalmer</option>
+                                    <option value="overlandpark">Overland park</option>
+                                    <option value="leesummit">Lee Summit</option>
+                                    <option value="olathe">Olathe</option>
+                                    <option value="warrensburg">Warrensburg</option>
+                                    <option value="kansascity">Kansas City</option>
+                                    <option value="independence">Independence</option>
+                                    <option value="lenexa">Lenexa</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -211,8 +216,7 @@ _END;
                 $image_path = "user_uploads/" . $row['image'];
                 $adv_id = $row['adv_id'];
                 //echo $image_path;
-                echo '<div class="container" ><div class="row" id="div' . $i . '"><div class="col-md-7 col-md-offset-4 div"
-			 style="overflow:auto;">
+                echo '<div class="" ><div class="row" id="div' . $i . '"><div style="overflow:auto;">
 			<div class="col-md-4"><img src=' . $image_path . ' style="width:100%;"></div>
 			<div class="col-md-8" style="overflow:auto;">
 			<p style="text-align:center;" class = title><b>' . $row['title'] . '</b></p>
@@ -259,15 +263,9 @@ _END;
     </div>
 
     <div class="copyright">
-        <div class="container">
+        <div class="">
             <div class="col-md-6">
-                <p>© 2016 - All Rights Reserved , Khareedo Becho</p>
-            </div>
-            <div class="col-md-6">
-                <ul class="bottom_ul">
-                    <li><a href="#">khareedobecho.com</a></li>
-                    <li><a href="#">About us</a></li>
-                </ul>
+                <p>© 2023 - All Rights Reserved , Student Compas</p>
             </div>
         </div>
     </div>

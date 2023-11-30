@@ -45,7 +45,9 @@ _END;
  <h1>Student Compass</h1>
  <div class="container">
 
- 	<img src="images/login_bg_img.jpg">
+ 	<img src="images/login_bg_img.jpg" style="
+    height: 300px;
+">
  	<?php
 
 		$username = "";
