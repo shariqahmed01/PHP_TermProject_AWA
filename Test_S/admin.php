@@ -13,7 +13,53 @@ require_once 'connection.php'; ?>
 
     <link rel="stylesheet" href="signup_style.css">
 </head>
-<body style="background-color: black;">
+<body style="background-color: gray;">
+
+
+<nav class="navbar-fixed navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="admin_wall.php">Student Compass ( ADMIN PANEL )</a>
+			</div>
+
+			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="collapse navbar-collapse navHeadeorCollapse">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a href="admin_wall.php">Home</a></li>
+					<li class="active"><a href="home.php">Website Home</a></li>
+
+
+
+
+
+					<?php
+					if (loggedin_admin()) {
+						$temp = $_SESSION['username_admin'];
+						echo <<< _END
+      		<li><a href="logout.php">Logout</a> 
+_END;
+					} else {
+						echo <<< _END
+      		
+      		<li><a href="admin.php"><span class="glyphicon glyphicon-user"></span>Admin Sign In</a>
+_END;
+					}
+
+					?>
+
+				</ul>
+			</div>
+
+
+
+		</div>
+	</nav>
+
  
       <?php 
       if(loggedin_admin())

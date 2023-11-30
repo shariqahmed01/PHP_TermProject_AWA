@@ -107,8 +107,6 @@ _END;
            <input name="password_again" type="password" placeholder="Confirm password" required="required" />
            <input name="email" type="email" placeholder="Email address" value="<?php echo $email; ?>" />
            <input name="phone" type="number" placeholder="Phone Number" value="<?php echo $phone; ?>" required="required" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength="10" />
-
-           <input name="phone" type="number" placeholder="Phone Number" value="<?php echo $phone; ?>" />
            <input type="submit" value="Sign me up!" class="inputButton" />
            <div class="text-center">
              already have an account? <a href="login.php" id="login_id">login</a>

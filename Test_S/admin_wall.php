@@ -49,6 +49,8 @@
 
 				<ul class="nav navbar-nav navbar-right">
 					<li class="active"><a href="admin_wall.php">Home</a></li>
+					<li class="active"><a href="home.php">Website Home</a></li>
+
 
 
 
@@ -221,16 +223,28 @@ _END;
 
 	</div>
 
-
+<!-- 
 	<div class="copyright">
 		<div class="container">
 			<div class="col-md-6">
 				<p>© 2023 - All Rights Reserved , Student Compass</p>
 			</div>
 		</div>
-	</div>
+	</div> -->
 
-
+ <!-- Footer Section -->
+ <footer>
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>© 2023 - All Rights Reserved, Student Compass</p>
+                    </div>
+                    <!-- Add more columns or content if needed -->
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </body>
 

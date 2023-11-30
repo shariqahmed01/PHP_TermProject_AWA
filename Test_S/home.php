@@ -24,8 +24,13 @@
         .carousel-inner>.item>img,
         .carousel-inner>.item>a>img {
             width: 70%;
+            height: 500px;
             margin: auto;
         }
+        /* .carousel-inner{
+            width: 70%;
+            margin: auto;
+        } */
     </style>
 </head>
 <link href="styles/login_style.css" rel="stylesheet">
@@ -68,6 +73,9 @@ _END;
 _END;
                     }
                     ?>
+                    <li>
+                        <a href="admin.php"><span class="glyphicon glyphicon-user"></span> Admin Login</a>
+                    </li>
 
                 </ul>
             </div>
@@ -90,18 +98,18 @@ _END;
         <!-- Wrapper for slides -->
         <div class="carousel-inner" role="listbox">
             <div class="item active">
-                <img src="images/buy.png" alt="buy image">
+                <img src="images/Student_Compass_img.png" alt="buy image">
             </div>
 
             <div class="item">
-                <img src="images/sell.png" alt="sell image">
+                <img src="images/buy.png" alt="sell image">
             </div>
-            <div class="item">
-                <img src="images/rent.png" alt="rent image">
-            </div>
-
             <div class="item">
                 <img src="images/sell.png" alt="rent image">
+            </div>
+
+            <div class="item">
+                <img src="images/rent.png" alt="rent image">
             </div>
         </div>
 
@@ -126,10 +134,12 @@ _END;
                         <fieldset style="padding:20px;">
                             <div class="col-md-3">
                                 <legend>Filter by category</legend>
+                                <input type="checkbox" name="category[]" value="accomidation" />Accomidation
+                                <input type="checkbox" name="category[]" value="accesories" />Accesories
                                 <input type="checkbox" name="category[]" value="book" />Books
                                 <input type="checkbox" name="category[]" value="bicycle" />Bicycle
-                                <input type="checkbox" name="category[]" value="mobile" />Mobile Phones
-                                <input type="checkbox" name="category[]" value="accesories" />Accesories
+                                <input type="checkbox" name="category[]" value="car" />Cars
+                                <input type="checkbox" name="category[]" value="mobile" />Mobile Phones<br>
                                 <input type="checkbox" name="category[]" value="other" />other
                             </div>
                             <div class="col-md-3">

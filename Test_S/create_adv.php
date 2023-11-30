@@ -151,10 +151,12 @@ unset($_SESSION['res']);      }
         
         <select name= "category"   class="input pass"  value = "$category" required = "required">
         <option  value="">___Select product category____</option>
+        <option  value="accomidation">Accomidation</option>
+        <option  value="accesories">Accesories</option>
         <option  value="bicycle">Bicycle</option>
         <option  value="book">Book</option>
+        <option  value="car">Car</option>
         <option  value="mobile">Mobile Phone</option>
-        <option  value="accesories">Accesories</option>
         <option  value="other">Others</option>
         
         </select>
