@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <?php require_once 'core.php'; ?>
 <html lang="en">
@@ -7,9 +6,9 @@
     <title>Create Advertisement</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
     <link rel="stylesheet" href="styles/create_adv_style.css">
@@ -63,22 +62,22 @@ _END;
         $price_initial = "";
         $price_final = "";
         $username = $_SESSION['username'];
-        $result ="";
+        $result = "";
 
 
         if (
             isset($_POST['title']) && isset($_POST['price']) && isset($_POST['phone']) && isset($_POST['area']) &&
-            isset($_POST['category']) && isset($_POST['description']) 
+            isset($_POST['category']) && isset($_POST['description'])
         ) {
 
             //echo "Hello World 2 !";
-            $title = $_POST['title'];
-            $price = $_POST['price'];
-            $phone = $_POST['phone'];
-            $description = $_POST['description'];
-            $area = $_POST['area'];
-            $category = $_POST['category'];
-            $address = $_POST['address'];
+            $title = trim(htmlentities(strip_tags($_POST['title'])));
+            $price = trim(htmlentities(strip_tags($_POST['price'])));
+            $phone = trim(htmlentities(strip_tags($_POST['phone'])));
+            $description = trim(htmlentities(strip_tags($_POST['description'])));
+            $area = trim(htmlentities(strip_tags($_POST['area'])));
+            $category = trim(htmlentities(strip_tags($_POST['category'])));
+            $address = trim(htmlentities(strip_tags($_POST['address'])));
             $price_array = explode("-", $price);
             $price_initial = $price_array[0];
             $price_final = $price_array[1];
@@ -115,12 +114,12 @@ _END;
             }
             header("Location:{$_SERVER['PHP_SELF']}");
             exit();
-                 
         }
-        if(isset($_SESSION['res'])){
-            $result=$_SESSION['res'];
+        if (isset($_SESSION['res'])) {
+            $result = $_SESSION['res'];
             // session_destroy();
-unset($_SESSION['res']);      }
+            unset($_SESSION['res']);
+        }
         if (!empty($result)) {
             echo "<h3>" . $result . "</h3>";
         }

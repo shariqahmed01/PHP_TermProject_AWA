@@ -2,7 +2,7 @@
 $dbusername = "root";
 $password = "";
 $dbname = "student_compass";
-$servername = "localhost:3308";
+$servername = "localhost";
 // Create connection
 $conn = new mysqli($servername, $dbusername, $password, $dbname);
 // Check connection

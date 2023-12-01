@@ -1,124 +1,115 @@
- <?php require_once'core_admin.php';
-require_once 'connection.php'; ?>
+ <?php require_once 'core_admin.php';
+	require_once 'connection.php'; ?>
  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Admin Login</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <html lang="en">
+
+ <head>
+ 	<title>Admin Login</title>
+ 	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 
-    <link rel="stylesheet" href="signup_style.css">
-</head>
-<body style="background-color: gray;">
+ 	<link rel="stylesheet" href="signup_style.css">
+ </head>
+
+ <body style="background-color: gray;">
 
 
-<nav class="navbar-fixed navbar-inverse navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="admin_wall.php">Student Compass ( ADMIN PANEL )</a>
-			</div>
+ 	<nav class="navbar-fixed navbar-inverse navbar-fixed-top">
+ 		<div class="container">
+ 			<div class="navbar-header">
+ 				<a class="navbar-brand" href="admin_wall.php">Student Compass ( ADMIN PANEL )</a>
+ 			</div>
 
-			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<div class="collapse navbar-collapse navHeadeorCollapse">
+ 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+ 				<span class="icon-bar"></span>
+ 				<span class="icon-bar"></span>
+ 				<span class="icon-bar"></span>
+ 			</button>
+ 			<div class="collapse navbar-collapse navHeadeorCollapse">
 
-				<ul class="nav navbar-nav navbar-right">
-					<li class="active"><a href="admin_wall.php">Home</a></li>
-					<li class="active"><a href="home.php">Website Home</a></li>
-
-
+ 				<ul class="nav navbar-nav navbar-right">
+ 					<li class="active"><a href="admin_wall.php">Home</a></li>
+ 					<li class="active"><a href="home.php">Website Home</a></li>
 
 
 
-					<?php
-					if (loggedin_admin()) {
-						$temp = $_SESSION['username_admin'];
-						echo <<< _END
+
+
+ 					<?php
+						if (loggedin_admin()) {
+							$temp = $_SESSION['username_admin'];
+							echo <<< _END
       		<li><a href="logout.php">Logout</a> 
 _END;
-					} else {
-						echo <<< _END
+						} else {
+							echo <<< _END
       		
       		<li><a href="admin.php"><span class="glyphicon glyphicon-user"></span>Admin Sign In</a>
 _END;
-					}
+						}
 
-					?>
+						?>
 
-				</ul>
-			</div>
+ 				</ul>
+ 			</div>
 
 
 
-		</div>
-	</nav>
+ 		</div>
+ 	</nav>
 
- 
-      <?php 
-      if(loggedin_admin())
-      {
-      		$temp = $_SESSION['username_admin'];
-      		echo <<< _END
+
+ 	<?php
+		if (loggedin_admin()) {
+			$temp = $_SESSION['username_admin'];
+			echo <<< _END
       		<li>Welcome $temp </li>
       		<li><a href="logout.php">Logout</a> 
 _END;
-      		
-      }
-      
-     
-      ?>
-
-	  
-    <div class="container">
-<?php
-
-$username = "";
-
-
-	if(isset( $_POST['username']) && isset($_POST['password'])  )
-	{
-		$username = $_POST['username'];
-		$password = $_POST['password'];
-		$hased_password = md5($password);
-	}
-	if( !empty($username)  && !empty($password) )
-	{
-	  
-	  
-		$query_login="SELECT username, password FROM admin WHERE username = '$username' AND password ='$hased_password'";
-		  
-		 if($query_run = mysqli_query($conn,$query_login) )
-		 {
-			$query_num_row = mysqli_num_rows($query_run);
-
-			if( $query_num_row == 0)
-			{
-			 
-			  echo '<div class="alert1"><h5>Invalid Username or Password</h5></div>';
-			}
-			else if($query_num_row == 1)
-			{
-				$_SESSION['username_admin'] = $username;
-				$_SESSION['just_now'] = 1;
-				
-				//echo temp;
-				header("location: admin_wall.php");
-			}
-
 		}
-		else
-		{
-		  echo "Kindly Enter Your Login Details!";
-		}
-	}
-	echo <<< _END
+
+
+		?>
+
+
+ 	<div class="container">
+ 		<?php
+
+			$username = "";
+
+
+			if (isset($_POST['username']) && isset($_POST['password'])) {
+				$username = trim(htmlentities(strip_tags($_POST['username'])));
+				$password = trim(htmlentities(strip_tags($_POST['password'])));
+				$hased_password = password_hash($password,PASSWORD_DEFAULT);
+			}
+			if (!empty($username)  && !empty($password)) {
+
+
+				$query_login = "SELECT username, password FROM admin WHERE username = '$username' AND password ='$hased_password'";
+
+				if ($query_run = mysqli_query($conn, $query_login)) {
+					$query_num_row = mysqli_num_rows($query_run);
+
+					if ($query_num_row == 0) {
+
+						echo '<div class="alert1"><h5>Invalid Username or Password</h5></div>';
+					} else if ($query_num_row == 1) {
+						$_SESSION['username_admin'] = $username;
+						$_SESSION['just_now'] = 1;
+
+						//echo temp;
+						header("location: admin_wall.php");
+					}
+				} else {
+					echo "Kindly Enter Your Login Details!";
+				}
+			}
+			echo <<< _END
 	<div class="row" style="margin:50px 15px;">
     <div class="col-md-4">
     <div id="logbox">
@@ -138,10 +129,11 @@ $username = "";
    
 _END;
 
-?>
+			?>
 
-</div>
-</div>
-</div>
-</body>
-</html>
+ 	</div>
+ 	</div>
+ 	</div>
+ </body>
+
+ </html>

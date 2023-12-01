@@ -7,9 +7,9 @@
    <title>Sign Up</title>
    <meta charset="utf-8">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
    <link rel="stylesheet" href="styles/signup_style.css">
  </head>
 
@@ -46,13 +46,13 @@ _END;
 
 
     if (isset($_POST['name']) && isset($_POST['username']) && isset($_POST['password']) && isset($_POST['password_again']) && isset($_POST['email']) && isset($_POST['phone'])) {
-      $name = $_POST['name'];
-      $username = $_POST['username'];
-      $password = $_POST['password'];
-      $password_again = $_POST['password_again'];
-      $email = $_POST['email'];
-      $phone = $_POST['phone'];
-      $password_hash = md5($password);
+      $name = trim(htmlentities(strip_tags($_POST['name'])));
+      $username = trim(htmlentities(strip_tags($_POST['username'])));
+      $password = trim(htmlentities(strip_tags($_POST['password'])));
+      $password_again = trim(htmlentities(strip_tags($_POST['password_again'])));
+      $email = trim(htmlentities(strip_tags($_POST['email'])));
+      $phone = trim(htmlentities(strip_tags($_POST['phone'])));
+      $password_hash = password_hash($password,PASSWORD_DEFAULT);
 
 
 
@@ -83,7 +83,6 @@ _END;
             $insert_query = "INSERT INTO users VALUES('$username' , '$name' , '$password_hash' , '$email' , '$phone')";
             $insert_run = mysqli_query($conn, $insert_query);
             echo "Successfully Done !";
-            session_start();
             $_SESSION['registered'] = 1;
             echo '<script type="text/javascript">window.location.href="home.php";</script>';
             die();

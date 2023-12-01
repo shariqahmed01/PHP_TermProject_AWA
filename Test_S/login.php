@@ -1,5 +1,6 @@
  <?php require_once 'core.php';
-	require_once 'connection.php'; ?>
+	require_once 'connection.php';
+	ob_start(); ?>
  <!DOCTYPE html>
  <html lang="en">
 
@@ -7,9 +8,9 @@
  	<title>Login</title>
  	<meta charset="utf-8">
  	<meta name="viewport" content="width=device-width, initial-scale=1">
- 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+ 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
- 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
  	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
  	<link rel="stylesheet" href="styles/signup_style.css">
@@ -66,9 +67,9 @@ _END;
 _END;
 		} else {
 			if (isset($_POST['username']) && isset($_POST['password'])) {
-				$username = $_POST['username'];
-				$password = $_POST['password'];
-				$hased_password = md5($password);
+				$username = trim(htmlentities(strip_tags($_POST['username'])));
+				$password = trim(htmlentities(strip_tags($_POST['password'])));
+				$hased_password = password_hash($password,PASSWORD_DEFAULT);
 			}
 			if (!empty($username)  && !empty($password)) {
 
@@ -85,7 +86,6 @@ _END;
 						$_SESSION['username'] = $username;
 						$_SESSION['just_now'] = 1;
 						$temp = $_SERVER['HTTP_REFERER'];
-						//echo temp;
 						header("location:$temp");
 					}
 				} else {
@@ -108,6 +108,7 @@ _END;
    
 _END;
 		}
+		
 		?>
  </div>
  </div>

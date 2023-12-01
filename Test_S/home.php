@@ -1,3 +1,14 @@
+<?php
+session_set_cookie_params(24 * 60 * 60);
+
+if (isset($_COOKIE['visit_count'])) {
+    $visitCount = $_COOKIE['visit_count'] + 1;
+} else {
+    $visitCount = 1;
+}
+
+setcookie('visit_count', $visitCount, time() + 86400);
+?>
 <!DOCTYPE html>
 <?php require_once 'core.php'; ?>
 <html lang="en">
@@ -6,9 +17,9 @@
     <title>Student Compass</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
     <!-- Page styles -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
@@ -27,7 +38,6 @@
             height: 500px;
             margin: auto;
         }
-        
     </style>
 </head>
 <link href="styles/login_style.css" rel="stylesheet">

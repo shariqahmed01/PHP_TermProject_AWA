@@ -4,7 +4,7 @@ session_start();
 if(isset($_SERVER['HTTP_REFERER']))
 	$http_referer = $_SERVER['HTTP_REFERER'];    #tells users from where we came
 else
-	$http_referer = "http://araniisansthan.com/";
+	$http_referer = "admin.php";
 if(!function_exists('loggedin_admin'))
 {
 		function loggedin_admin()
