@@ -69,7 +69,7 @@ _END;
 			if (isset($_POST['username']) && isset($_POST['password'])) {
 				$username = trim(htmlentities(strip_tags($_POST['username'])));
 				$password = trim(htmlentities(strip_tags($_POST['password'])));
-				$hased_password = password_hash($password,PASSWORD_DEFAULT);
+				$hased_password = md5($password);
 			}
 			if (!empty($username)  && !empty($password)) {
 

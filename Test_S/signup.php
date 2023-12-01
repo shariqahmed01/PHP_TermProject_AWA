@@ -52,7 +52,7 @@ _END;
       $password_again = trim(htmlentities(strip_tags($_POST['password_again'])));
       $email = trim(htmlentities(strip_tags($_POST['email'])));
       $phone = trim(htmlentities(strip_tags($_POST['phone'])));
-      $password_hash = password_hash($password,PASSWORD_DEFAULT);
+      $password_hash = md5($password);
 
 
 
